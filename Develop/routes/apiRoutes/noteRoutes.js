@@ -1,8 +1,6 @@
 const router = require('express').Router()
 const { notes } = require('../../db/db')
-const filterByQuery = require('../../lib/notes')
-
-let id = 0;
+const { filterByQuery, createNewNote } = require('../../lib/notes')
 
 // get notes
 router.get('/notes', (req, res) => {
@@ -14,9 +12,12 @@ router.get('/notes', (req, res) => {
 })
 
 // post note
-/* router.post('/notes', (req, res) => {
-    req.body.id = this.toString(id++)
+router.post('/notes', (req, res) => {
+    // set unique id
+    req.body.id = "id"
     
-}) */
+    const note = createNewNote(req.body, notes)
+    res.json(note)
+})
 
 module.exports = router
