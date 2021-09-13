@@ -1,4 +1,4 @@
-function filterByQuery(query, notesArray) {
+function filterByTitle(query, notesArray) {
     let filteredResults = notesArray
     if(query.title) {
         filteredResults = filteredResults.filter(note => note.title === query.title)
@@ -6,4 +6,4 @@ function filterByQuery(query, notesArray) {
     return filteredResults
 }
 
-module.exports = filterByQuery
+module.exports = filterByTitle
