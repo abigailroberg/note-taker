@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const { notes } = require('../../db/db')
 const { filterByQuery, createNewNote } = require('../../lib/notes')
+const uniqid = require('uniqid')
 
 // get notes
 router.get('/notes', (req, res) => {
@@ -14,7 +15,7 @@ router.get('/notes', (req, res) => {
 // post note
 router.post('/notes', (req, res) => {
     // set unique id
-    req.body.id = "id"
+    req.body.id = uniqid()
     
     const note = createNewNote(req.body, notes)
     res.json(note)
